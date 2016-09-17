@@ -49,8 +49,8 @@ public struct Matrix<T> where T: FloatingPoint, T: ExpressibleByFloatLiteral {
         self.init(rows: m, columns: n, repeatedValue: repeatedValue)
 
         for (i, row) in contents.enumerated() {
-            let minimum = min(m, row.count)
-            grid.replaceSubrange(i*n..<(i*n+minimum), with: row)
+            let end = row.count > m ? row.count : m
+            grid.replaceSubrange(i*n..<i*n+end, with: row)
         }
     }
 
